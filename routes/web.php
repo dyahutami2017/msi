@@ -17,25 +17,31 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/login','AuthController@login')->name('login');
-Route::post('/postlogin','AuthController@postlogin');
-Route::get('logout','AuthController@logout');
+Route::get('/login', 'AuthController@login')->name('login');
+Route::post('/postlogin', 'AuthController@postlogin');
+Route::get('logout', 'AuthController@logout');
 Auth::routes();
 
-Route::group(['middleware' => ['auth','checkRole:admin']],function(){
-    Route::get('/dashboard','SiswaController@dashboard')->middleware('auth');
-    Route::get('/siswa','SiswaController@index');
-    Route::post('/siswa/create','SiswaController@create');
-    Route::get('/siswa/{id}/edit','SiswaController@edit');
-    Route::post('/siswa/{id}/update','SiswaController@update');
-    Route::get('/siswa/{id}/delete','SiswaController@delete');
-    Route::get('/siswa/{id}/profile','SiswaController@profile');
-    Route::post('/siswa/{id}/addnilai','SiswaController@addnilai');
+Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
+    Route::get('/dashboard', 'SiswaController@dashboard')->middleware('auth');
+    Route::get('/siswa', 'SiswaController@index');
+    Route::post('/siswa/create', 'SiswaController@create');
+    Route::get('/siswa/{id}/edit', 'SiswaController@edit');
+    Route::post('/siswa/{id}/update', 'SiswaController@update');
+    Route::get('/siswa/{id}/delete', 'SiswaController@delete');
+    Route::get('/siswa/{id}/profile', 'SiswaController@profile');
+    Route::post('/siswa/{id}/addnilai', 'SiswaController@addnilai');
+    Route::get('/upload', 'MateriController@upload')->name('upload');
+    Route::post('/upload/proses', 'MateriController@proses_upload')->name('uploadproses');
+    Route::get('/upload/hapus/{id}', 'MateriController@hapus');
+    Route::get('/upload/download/{file}', 'MateriController@download');
+    Route::get('/matapel', 'SiswaController@addmapel');
+    Route::post('/matapel/store', 'SiswaController@storemapel');
 });
-Route::group(['middleware' => ['auth','checkRole:admin,siswa']],function(){
-    Route::get('/dashboard','SiswaController@dashboard');
-    Route::get('/user/{user_id}/profile','SiswaController@profile');
-    
+Route::group(['middleware' => ['auth', 'checkRole:admin,siswa']], function () {
+    Route::get('/dashboard', 'SiswaController@dashboard');
+    Route::get('/user/{user_id}/profile', 'SiswaController@profile');
+    Route::get('/upload', 'MateriController@upload');
 });
 
 Auth::routes();

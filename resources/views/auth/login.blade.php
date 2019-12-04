@@ -59,7 +59,7 @@
 					<div class="right">
 						<div class="overlay"></div>
 						<div class="content text">
-							<h1 class="heading">MEDYS : Sistem Pengelolaan Data Siswa</h1>
+							<h1 class="heading">MEDYS : Sistem Belajar Siswa</h1>
 							<p>SD N 6 Bendungan</p>
 						</div>
 					</div>

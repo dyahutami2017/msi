@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Storage;
 use Str;
 use App\User;
+use DB;
 use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
@@ -37,16 +38,16 @@ class SiswaController extends Controller
         ]);
 
         //Insert ke table users
-        $user= new \App\User;
+        $user = new \App\User;
         $user->role = 'siswa';
         $user->name = $request->nama_depan;
         $user->email = $request->email;
-        $user->password = $request->nama_depan;
+        $user->password = bcrypt($request->nama_depan);
         $user->remember_token = Str::random(60);
         $user->save();
 
         //Insert ke table siswa
-        
+
         $file = $request->file('avatar');
         $nama_file = time() . "_" . $file->getClientOriginalName();
         $tujuan_upload = 'images/';
@@ -60,7 +61,7 @@ class SiswaController extends Controller
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'avatar' => $nama_file,
-            
+
         ]);
         return redirect('/siswa')->with('sukses', 'Data Berhasil Ditambahkan');
     }
@@ -89,13 +90,13 @@ class SiswaController extends Controller
         //     $siswa->delete($siswa);
         //     return redirect('/siswa')->with('sukses', 'Data Berhasil Dihapus');
         // }
-       
-        // return redirect('/siswa')->with('sukses', 'Data Berhasil Dihapus');
-        $siswa=Siswa::where('id',$id)->firstOrFail();
-        
-        Storage::delete('images/'.$siswa->nama_file);
 
-        Siswa::where('id',$id)->delete();
+        // return redirect('/siswa')->with('sukses', 'Data Berhasil Dihapus');
+        $siswa = Siswa::where('id', $id)->firstOrFail();
+
+        Storage::delete('images/' . $siswa->nama_file);
+
+        Siswa::where('id', $id)->delete();
         return redirect('/siswa')->with('sukses', 'Data Berhasil Dihapus');
     }
 
@@ -106,15 +107,14 @@ class SiswaController extends Controller
     public function profile($id)
     {
         // dd($request->all());
-        
-        if(Auth::check()&&Auth::user()->role=='admin'){
+
+        if (Auth::check() && Auth::user()->role == 'admin') {
             $siswa = \App\Siswa::where('id', $id)->first();
-        }
-        else{
-            $siswa=\App\Siswa::where('user_id',$id)->first();
+        } else {
+            $siswa = \App\Siswa::where('user_id', $id)->first();
         }
         $matapelajaran = \App\Mapel::all();
-        return view('siswa.profile', ['siswa' => $siswa,'matapelajaran'=>$matapelajaran]);
+        return view('siswa.profile', ['siswa' => $siswa, 'matapelajaran' => $matapelajaran]);
     }
     // private function imageUpload(Request $request)
     // {
@@ -127,13 +127,20 @@ class SiswaController extends Controller
     //     $tujuan_upload = 'images/';
     //     $file->move($tujuan_upload, $nama_file);
     // }
-    public function addnilai(Request $request,$idsiswa){
-    //dd($request->all());
+    public function addnilai(Request $request, $idsiswa)
+    {
+        //dd($request->all());
         $siswa = \App\Siswa::find($idsiswa);
-        $siswa->mapel()->attach($request->mapel,['nilai'=> $request->nilai]);
-        return redirect('siswa/'.$idsiswa.'/profile')->with('sukses','Nilai berhasil dimasukkan');
+        $siswa->mapel()->attach($request->mapel, ['nilai' => $request->nilai]);
+        return redirect('siswa/' . $idsiswa . '/profile')->with('sukses', 'Nilai berhasil dimasukkan');
     }
 
-    // public function addmapel()
-
+    public function addmapel(Request $request)
+    {
+        return view('siswa.mapel');
+    }
+    public function storemapel(Request $request){
+        \App\Mapel::create($request->all());
+        return redirect('/matapel');
+    }
 }
