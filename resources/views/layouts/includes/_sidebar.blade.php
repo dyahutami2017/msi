@@ -8,8 +8,12 @@
 						<li><a href="/upload"><i class="lnr lnr-bookmark"></i><span>Materi</span></a></li>
 						@elseif(auth()->user()->role == 'admin')
 						<li><a href="/siswa" class=""><i class="lnr lnr-user"></i> <span>Siswa</span></a></li>
+						<li><a href="/guru"><i class="lnr lnr-user"></i><span>Guru</span></a></li>
 						<li><a href="/upload"><i class="lnr lnr-bookmark"></i><span>Materi</span></a></li>
 						<li><a href="/matapel"><i class="lnr lnr-bookmark"></i><span>Mata Pelajaran</span></a></li>
+						@elseif(auth()->user()->role == 'guru')
+						<li><a href="/siswa" class=""><i class="lnr lnr-user"></i> <span>Siswa</span></a></li>
+						<li><a href="/upload"><i class="lnr lnr-bookmark"></i><span>Materi</span></a></li>
 						@endif
 					</ul>
 				</nav>

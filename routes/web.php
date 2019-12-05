@@ -23,7 +23,7 @@ Route::get('logout', 'AuthController@logout');
 Auth::routes();
 
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
-    Route::get('/dashboard', 'SiswaController@dashboard')->middleware('auth');
+    Route::get('/dashboard', 'SiswaController@dashboard');
     Route::get('/siswa', 'SiswaController@index');
     Route::post('/siswa/create', 'SiswaController@create');
     Route::get('/siswa/{id}/edit', 'SiswaController@edit');
@@ -37,13 +37,33 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/upload/download/{file}', 'MateriController@download');
     Route::get('/matapel', 'SiswaController@addmapel');
     Route::post('/matapel/store', 'SiswaController@storemapel');
+    Route::get('/guru','GuruController@index');
+    Route::post('/guru/create','GuruController@create');
+    Route::get('/guru/{id}/edit','GuruController@edit');
+    Route::post('/guru/{id}/update','GuruController@update');
+    Route::get('/guru/{id}/delete','GuruController@destroy');
 });
 Route::group(['middleware' => ['auth', 'checkRole:admin,siswa']], function () {
     Route::get('/dashboard', 'SiswaController@dashboard');
     Route::get('/user/{user_id}/profile', 'SiswaController@profile');
     Route::get('/upload', 'MateriController@upload');
+    Route::get('/upload/download/{file}', 'MateriController@download');
 });
 
+Route::group(['middleware' => ['auth', 'checkRole:admin,guru']], function () {
+    Route::get('/dashboard', 'SiswaController@dashboard');
+    Route::get('/siswa', 'SiswaController@index');
+    Route::post('/siswa/create', 'SiswaController@create');
+    Route::get('/siswa/{id}/edit', 'SiswaController@edit');
+    Route::post('/siswa/{id}/update', 'SiswaController@update');
+    Route::get('/siswa/{id}/delete', 'SiswaController@delete');
+    Route::get('/siswa/{id}/profile', 'SiswaController@profile');
+    Route::post('/siswa/{id}/addnilai', 'SiswaController@addnilai');
+    Route::get('/upload', 'MateriController@upload')->name('upload');
+    Route::post('/upload/proses', 'MateriController@proses_upload')->name('uploadproses');
+    Route::get('/upload/hapus/{id}', 'MateriController@hapus');
+    Route::get('/upload/download/{file}', 'MateriController@download');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

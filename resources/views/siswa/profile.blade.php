@@ -19,15 +19,10 @@
                             </div>
                             <div class="profile-stat">
                                 <div class="row">
-                                    <div class="col-md-4 stat-item">
+                                    <div class="col stat-item">
                                         <span>Mata Pelajaran</span>{{$siswa->mapel->count()}}
                                     </div>
-                                    <div class="col-md-4 stat-item">
-                                        15 <span>Awards</span>
-                                    </div>
-                                    <div class="col-md-4 stat-item">
-                                        2174 <span>Points</span>
-                                    </div>
+                                   
                                 </div>
                             </div>
 

@@ -41,4 +41,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo('\App\Siswa');
     }
+    public function guru(){
+        return $this->belongsTo('\App\Guru');
+    }
 }

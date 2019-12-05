@@ -22,7 +22,7 @@
                                         </div>
                                         @endif
 
-                                        @if(auth()->user()->role == 'admin')
+                                        @if(auth()->user()->role == 'guru'||'admin')
                                         <form action="/upload/proses" method="POST" enctype="multipart/form-data">
                                             {{ csrf_field() }}
 
