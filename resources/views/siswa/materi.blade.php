@@ -22,7 +22,7 @@
                                         </div>
                                         @endif
 
-                                        @if(auth()->user()->role == 'guru'||'admin')
+                                        @if((auth()->user()->role == 'guru') or (auth()->user()->role =='admin'))
                                         <form action="/upload/proses" method="POST" enctype="multipart/form-data">
                                             {{ csrf_field() }}
 
@@ -62,7 +62,7 @@
                                                     
                                                     <td>{{$m->keterangan}}</td>
                                                     <td>
-                                                    @if(auth()->user()->role == 'admin')
+                                                    @if((auth()->user()->role == 'admin') or (auth()->user()->role == 'guru'))
                                                         <a class="btn btn-danger" href="/upload/hapus/{{ $m->id }}">HAPUS</a>
                                                     @endif
                                                     <a class="btn btn-primary" href="/upload/download/{{ $m->file}}">Download</a></td>

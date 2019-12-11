@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::post('/guru/{id}/update','GuruController@update');
     Route::get('/guru/{id}/delete','GuruController@destroy');
 });
-Route::group(['middleware' => ['auth', 'checkRole:admin,siswa']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:siswa']], function () {
     Route::get('/dashboard', 'SiswaController@dashboard');
     Route::get('/user/{user_id}/profile', 'SiswaController@profile');
     Route::get('/upload', 'MateriController@upload');

@@ -41,6 +41,16 @@ return [
             'provider' => 'users',
         ],
 
+        // 'siswa' => [
+        //     'driver' => 'session',
+        //     'provider' => 'siswas',
+        // ],
+
+        // 'guru' => [
+        //     'driver' => 'session',
+        //     'provider' => '',
+        // ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
