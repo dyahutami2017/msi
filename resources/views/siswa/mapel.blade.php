@@ -27,6 +27,27 @@
                                               
                             <button type="submit" class="btn btn-warning">Tambah</button>
                         </form>
+                        <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Kode</th>
+                                        <th>Nama Mata Pelajaran</th>
+                                        <th>Semester</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($addmapel as $a)
+                                    <tr>
+                                        <td>{{$a->kode}}</td>
+                                        <td>{{$a->nama}}</a></td>
+                                        <td>{{$a->semester}}</td>
+                                        <td><a class="btn btn-warning btn-sm" href="/matapel/{{$a->id}}/editmatapel">Edit</a>
+                                            <a class="btn btn-danger btn-sm" href="/matapel/{{$a->id}}/delete">Hapus</a></td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                    </table>
                     </div>
                 </div>
             </div>

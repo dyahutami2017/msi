@@ -37,6 +37,9 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('/upload/download/{file}', 'MateriController@download');
     Route::get('/matapel', 'SiswaController@addmapel');
     Route::post('/matapel/store', 'SiswaController@storemapel');
+    Route::get('/matapel/{id}/editmatapel', 'SiswaController@editmapel');
+    Route::post('/matapel/{id}/update', 'SiswaController@updatemapel');
+    Route::get('/matapel/{id}/delete', 'SiswaController@deletemapel');   
     Route::get('/guru','GuruController@index');
     Route::post('/guru/create','GuruController@create');
     Route::get('/guru/{id}/edit','GuruController@edit');

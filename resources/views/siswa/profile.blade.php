@@ -42,7 +42,7 @@
                         <!-- END PROFILE DETAIL -->
                     </div>
                     <div class="profile-right">
-                        @if(auth()->user()->role == 'admin')
+                        @if((auth()->user()->role == 'admin') or (auth()->user()->role == 'guru') )
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalNilai">
                             Input Nilai
                         </button>

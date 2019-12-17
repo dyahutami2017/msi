@@ -10,6 +10,7 @@ use Storage;
 use Str;
 use App\User;
 use DB;
+use App\Mapel;
 use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
@@ -108,7 +109,7 @@ class SiswaController extends Controller
     {
         // dd($request->all());
 
-        if (Auth::check() && Auth::user()->role == 'admin') {
+        if (Auth::check() && ((Auth::user()->role == 'admin') or (Auth::user()->role == 'guru'))) {
             $siswa = \App\Siswa::where('id', $id)->first();
         } else {
             $siswa = \App\Siswa::where('user_id', $id)->first();
@@ -137,10 +138,26 @@ class SiswaController extends Controller
 
     public function addmapel(Request $request)
     {
-        return view('siswa.mapel');
+        $addmapel = Mapel::get();
+        
+        return view('siswa.mapel', ['addmapel' => $addmapel]);
     }
     public function storemapel(Request $request){
         \App\Mapel::create($request->all());
+        return redirect('/matapel');
+    }
+    public function editmapel($id){
+        $addmapel = \App\Mapel::find($id);
+        return view('siswa.editmatapel', ['addmapel' => $addmapel]);
+    }
+    public function updatemapel(Request $request,$id){
+        $addmapel = \App\Mapel::find($id);
+        $addmapel->update($request->all());
+        return redirect('/matapel');
+    }
+    public function deletemapel($id){
+        $addmapel = \App\Mapel::find($id);
+        $addmapel->delete();
         return redirect('/matapel');
     }
 }
