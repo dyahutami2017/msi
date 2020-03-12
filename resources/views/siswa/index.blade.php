@@ -8,6 +8,15 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">Data Siswa</h3>
+                            <form action="/siswa" method="GET" class="navbar-form navbar-left">
+                                    <div class="input-group">
+                                        <input type="text" name="cari" value="" class="form-control" placeholder="Nama Depan Siswa">
+                                        <span class="input-group-btn"><button type="submit" value="cari" class="btn btn-lg">Cari</button></span>
+                                    </div>
+                                    <div class="right">
+                                    <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#exampleModal">Tambah data</button>
+                                    </div>
+                                </form>
                             <div class="right">
                                 <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#exampleModal">Tambah data</button>
                             </div>
