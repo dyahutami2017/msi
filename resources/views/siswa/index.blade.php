@@ -17,9 +17,7 @@
                                     <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#exampleModal">Tambah data</button>
                                     </div>
                                 </form>
-                            <div class="right">
-                                <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#exampleModal">Tambah data</button>
-                            </div>
+                           
                         </div>
                         <div class="panel-body">
                             <table class="table table-hover">

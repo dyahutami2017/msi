@@ -2,7 +2,7 @@
 <html lang="en" class="fullscreen-bg">
 
 <head>
-	<title>Login Bootstrap</title>
+	<title>Login</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -60,7 +60,7 @@
 						<div class="overlay"></div>
 						<div class="content text">
 							<h1 class="heading">MEDYS : Sistem Belajar Siswa</h1>
-							<p>SD N 6 Bendungan</p>
+							<!-- <p>SD N 6 Bendungan</p> -->
 						</div>
 					</div>
 					<div class="clearfix"></div>

@@ -22,7 +22,7 @@ class GuruController extends Controller
     {
         if ($request->has('cari')) {
             $data_guru = \App\Guru::where('nama_depan', 'LIKE', '%' . $request->cari . '%')->get();
-            $data_guru = \App\Guru::where('nama_belakang', 'LIKE', '%' . $request->cari . '%')->get();
+            //$data_guru = \App\Guru::where('nama_belakang', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
             $data_guru = \App\Guru::all();
         }

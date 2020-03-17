@@ -8,9 +8,17 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">Data Guru</h3>
-                            <div class="right">
-                                <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#exampleModal">Tambah data</button>
-                            </div>
+                            
+                            <form action="/guru" method="GET" class="navbar-form navbar-left">
+                                    <div class="input-group">
+                                        <input type="text" name="cari" value="" class="form-control" placeholder="Nama Depan Guru">
+                                        <span class="input-group-btn"><button type="submit" value="cari" class="btn btn-lg">Cari</button></span>
+                                    </div>
+                                    <div class="right">
+                                    <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#exampleModal">Tambah data</button>
+                                    </div>
+                                </form>
+                    
                         </div>
                         <div class="panel-body">
                             <table class="table table-hover">

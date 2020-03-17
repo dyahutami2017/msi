@@ -19,7 +19,7 @@ class SiswaController extends Controller
     {
         if ($request->has('cari')) {
             $data_siswa = \App\Siswa::where('nama_depan', 'LIKE', '%' . $request->cari . '%')->get();
-            $data_siswa = \App\Siswa::where('nama_belakang', 'LIKE', '%' . $request->cari . '%')->get();
+            //$data_siswa = \App\Siswa::where('nama_belakang', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
             $data_siswa = \App\Siswa::all();
         }
